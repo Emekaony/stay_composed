@@ -3,18 +3,27 @@ package com.example.helloworld
 import android.graphics.ColorSpace
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -44,6 +53,7 @@ class MainActivity : ComponentActivity() {
 fun Exercise() {
     Column (
         modifier = Modifier
+            .padding(10.dp)
             .border(2.dp, Color.Red)
             .padding(5.dp)
             .border(0.8.dp, Color.Blue)
@@ -61,6 +71,23 @@ fun Exercise() {
             ),
         ))
         Text("Download it from playstore", fontSize = 8.sp)
+        Image(painter = painterResource(id = R.drawable.camera),
+            contentDescription = "Man holding a camera",
+            modifier = Modifier.size(width = 150.dp, height = 150.dp)
+        )
+
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(
+                onClick = {
+                    Log.v("Dummy Logs", "You pressed the button")
+                },
+            ) {
+                Text("press me")
+            }
+        }
+
     }
 }
 
