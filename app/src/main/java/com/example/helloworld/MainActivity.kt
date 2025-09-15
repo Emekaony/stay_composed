@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -86,6 +87,12 @@ fun Exercise() {
             ) {
                 Text("press me")
             }
+
+            OutlinedButton(
+                onClick = {}
+            ) {
+                Text("Press")
+            }
         }
 
     }
@@ -100,7 +107,7 @@ fun ExercisePreview() {
 @Composable
 fun Greeting( modifier: Modifier = Modifier) {
     Column (
-        modifier = Modifier
+        modifier = modifier
             .border(2.dp, Color.Red)
             .padding(15.dp)
             .border(.3.dp, Color.Green)
