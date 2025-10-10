@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,9 +19,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,9 +47,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HelloWorldTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    HelloWorld(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -51,82 +55,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Exercise() {
+fun HelloWorld(modifier: Modifier) {
+    var count = 0
     Column (
-        modifier = Modifier
-            .padding(10.dp)
-            .border(2.dp, Color.Red)
-            .padding(5.dp)
-            .border(0.8.dp, Color.Blue)
-            .padding(top = 5.dp)
+        modifier = modifier.fillMaxSize().background(color = Color.White)
     ) {
-        Text("Hello Master Coding App",
-            color = Color.Red,
-            fontFamily = FontFamily.Serif,
-            fontStyle = FontStyle.Italic,
-            modifier = Modifier.padding(start = 15.dp),
-            textDecoration = TextDecoration.combine(
-            listOf(
-                TextDecoration.Underline,
-                TextDecoration.LineThrough
-            ),
-        ))
-        Text("Download it from playstore", fontSize = 8.sp)
-        Image(painter = painterResource(id = R.drawable.camera),
-            contentDescription = "Man holding a camera",
-            modifier = Modifier.size(width = 150.dp, height = 150.dp)
-        )
-
-        Column (
-            horizontalAlignment = Alignment.CenterHorizontally
+        Text("Count is: $count")
+        Button(
+            onClick = {
+                count++
+                Log.v("Dummy Logs", "Count is $count")
+            }
         ) {
-            Button(
-                onClick = {
-                    Log.v("Dummy Logs", "You pressed the button")
-                },
-            ) {
-                Text("press me")
-            }
-
-            OutlinedButton(
-                onClick = {}
-            ) {
-                Text("Press")
-            }
+            Text("increase count")
         }
-
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun ExercisePreview() {
-    Exercise()
-}
-
-@Composable
-fun Greeting( modifier: Modifier = Modifier) {
-    Column (
-        modifier = modifier
-            .border(2.dp, Color.Red)
-            .padding(15.dp)
-            .border(.3.dp, Color.Green)
-    ) {
-        Text(
-            text = "Hello Nnaemeka",
-            color = Color.Red,
-            fontFamily = FontFamily.Cursive,
-            modifier = modifier
-        )
-
-        Text("Another text")
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HelloWorldTheme {
-        Greeting()
-    }
+fun HelloWorldExample() {
+    HelloWorld(Modifier)
 }
