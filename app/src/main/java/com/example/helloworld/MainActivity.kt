@@ -24,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -56,7 +57,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun HelloWorld(modifier: Modifier) {
-    var count = 0
+    // "remember" tells compose to remember this value across recompositions
+    var count by remember { mutableIntStateOf(value = 0) }
     Column (
         modifier = modifier.fillMaxSize().background(color = Color.White)
     ) {
