@@ -22,6 +22,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -48,10 +49,25 @@ class MainActivity : ComponentActivity() {
         setContent {
             HelloWorldTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HelloWorld(modifier = Modifier.padding(innerPadding))
+                    ComposableWithState(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ComposableWithState(modifier: Modifier = Modifier) {
+    var text by remember { mutableStateOf("") }
+    Column (
+        modifier = modifier
+    ) {
+        TextField(
+            value = text,
+            onValueChange = { text = it },
+            label = { Text("Enter your name") }
+        )
+        Text("Text is: $text")
     }
 }
 
