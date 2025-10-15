@@ -48,8 +48,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             HelloWorldTheme {
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ComposableWithState(modifier = Modifier.padding(innerPadding))
+                    var text by remember { mutableStateOf("") }
+                    StateLessGreeting(modifier = Modifier.padding(innerPadding), text = text, onTextChange = { text = it })
                 }
             }
         }
@@ -65,6 +67,20 @@ fun ComposableWithState(modifier: Modifier = Modifier) {
         TextField(
             value = text,
             onValueChange = { text = it },
+            label = { Text("Enter your name") }
+        )
+        Text("Text is: $text")
+    }
+}
+
+@Composable
+fun StateLessGreeting(modifier: Modifier = Modifier, text: String, onTextChange: (String) -> Unit) {
+    Column (
+        modifier = modifier
+    ) {
+        TextField(
+            value = text,
+            onValueChange = onTextChange,
             label = { Text("Enter your name") }
         )
         Text("Text is: $text")
