@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomAppBar
@@ -187,14 +188,16 @@ fun BoxExample(modifier: Modifier = Modifier) {
 
 @Composable
 fun ScrollViewExample(modifier: Modifier = Modifier) {
-    Column (
-        modifier = modifier.verticalScroll(rememberScrollState())
+    LazyColumn  (
+        modifier = modifier.fillMaxSize()
     ) {
-        Image(painter = painterResource(R.drawable.elephant), contentDescription = "elephant", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Fit)
-        Image(painter = painterResource(R.drawable.elephant), contentDescription = "elephant", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Fit)
-        Image(painter = painterResource(R.drawable.elephant), contentDescription = "elephant", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Fit)
-        Image(painter = painterResource(R.drawable.elephant), contentDescription = "elephant", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Fit)
-        Image(painter = painterResource(R.drawable.elephant), contentDescription = "elephant", modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Fit)
+        items(5) {
+            Image(
+                painter = painterResource(R.drawable.elephant),
+                contentDescription = "elephant",
+                modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.Fit
+            )
+        }
     }
 }
 
