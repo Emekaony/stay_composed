@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -50,15 +51,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             HelloWorldTheme {
                 // rebuilding the UI
-                var context  = LocalContext.current
+                val context  = LocalContext.current
                 Scaffold(
                     topBar = {
-                        TopAppBar(
+                        CenterAlignedTopAppBar(
                             colors = TopAppBarDefaults.topAppBarColors(
                                 containerColor = Color.Green
                             ),
                             title = {
-                                Text("Top App Bar")
+                                Text( "Top App Bar")
                             }
                         )
                     },
